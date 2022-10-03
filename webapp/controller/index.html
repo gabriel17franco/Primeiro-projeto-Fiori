@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudando páginas Web</title>
+    <style>
+        h1 {
+            color: aqua;
+        }
+        
+        .Paragrafo {
+            color: violet;
+        }
+
+        #div {
+            width: 200px;
+            height: 200px;
+            padding-top: 10px;
+            border-top: 10px;
+            border-top-color: aqua;
+        }
+
+        #image {
+            width: 200px;
+            height: 200px;
+
+        }
+    </style>
+</head>
+<body>
+   <!--Tipos de Listas-->
+    <h1 class="header">Tipos de listas</h1>
+   
+    <!--Lista ordenada-->
+    <p class="Paragrafo">Lista Ordenada</p>
+    <ol type=i>          
+        <li>Pirulito</li>
+        <li>Mime</li>
+    </ol>
+
+    <!--Lista não ordenadas-->
+    <p class="Paragrafo">Lista não ordenada</p>
+    <ul type="disk">
+        <li>Pirulito</li>
+        <li>Mime</li>
+    </ul>
+
+    <!--Lista de definição-->
+    <p class="Paragrafo">Lista de definição</p>
+    <dl>
+        <dt>Cachorro</dt>
+        <dd>Pirulito</dd>
+        <dt>Gato</dt>
+        <dd>Mime</dd>
+    </dl>
+
+    <h1>Formulários</h1>
+    <form action="" id="form1">
+        <p>
+        <label>Nome
+            <input type="text" name="Nome" maxlength="25"/>
+        </label>    
+        <label>Senha
+            <input type="password" name="Senha" maxlength="25"/>
+        </label>
+        </p>    
+        <p>
+            <textarea name="Texto" cols="30" rows="10"></textarea>
+            <input type="submit" value="Enviar">
+            <p>
+                <label> checkbox
+                    <input type="checkbox" name="areas" value="checkbox"> 
+                </label>
+                <label> Radio
+                    <input type="radio" name="areas" value="radio" checked="checked"> 
+                </label>
+                <label> Radio
+                    <input type="radio" name="areas" value="radio"> 
+                </label>
+            </p> 
+        </p>
+        <p>
+        <label>Estado</label>
+        <select name="Estado">
+            <option value="RS">RS</option>
+            <option value="SC">SC</option>
+            <option value="PR">PR</option>
+        </select>    
+
+
+        </p>    
+    </form>
+
+    <div id = "div">
+        <img src="https://images.pexels.com/photos/8650280/pexels-photo-8650280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        id = image>
+    </div>
+
+
+</body>
+</html>

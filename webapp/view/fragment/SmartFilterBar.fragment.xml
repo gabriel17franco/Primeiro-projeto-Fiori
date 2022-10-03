@@ -1,0 +1,39 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+    xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    >
+    <smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="PurchasesViewSet" 
+    persistencyKey="SmartFilter_Explored"  enableBasicSearch="false"  liveMode="false"  >
+        <smartFilterBar:controlConfiguration>
+            <smartFilterBar:ControlConfiguration key="Status" visibleInAdvancedArea="true" label="Status" >					               
+                <smartFilterBar:customControl>
+                    <MultiComboBox 
+                        id="Status" 
+                        customData:hasValue="true">
+                        <c:Item key="Concluído" text="{i18n>status1}"/>
+                        <c:Item key="Entregue" text="{i18n>status2}"/>
+                        <c:Item key="Pendente" text="{i18n>status3}"/>
+                        <c:Item key="Preparando" text="{i18n>status4}"/>
+                        
+                        <c:Item key="Cancelado" text="Cancelado"/>    
+                    </MultiComboBox>
+                </smartFilterBar:customControl>
+            </smartFilterBar:ControlConfiguration>
+            
+            <smartFilterBar:ControlConfiguration key="Delivery" visibleInAdvancedArea="true" label="Delivery">					                     
+                <smartFilterBar:customControl>
+                    <MultiComboBox 
+                        id="Delivery" 
+                        customData:hasValue="true">
+                        <c:Item key="Entregar" text="{i18n>delivery1}"/>
+                        <c:Item key="Retirar" text="{i18n>delivery2}"/>
+                    </MultiComboBox>
+                </smartFilterBar:customControl>
+        </smartFilterBar:ControlConfiguration>   
+        </smartFilterBar:controlConfiguration>
+    </smartFilterBar:SmartFilterBar>
+
+
+</c:FragmentDefinition>

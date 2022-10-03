@@ -1,0 +1,166 @@
+<mvc:View
+	controllerName="project1.controller.CadastroPedido"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    displayBlock="true"
+	height="100%"
+>
+<m:Shell id="shell">
+	<m:App id="app">
+		<m:pages>
+			<m:Page id="page"
+			title="{i18n>appTitle4}"  showNavButton="true" navButtonPress="onNavBack">
+				<m:content>
+                    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+                        <headerTitle>
+                            <ObjectPageDynamicHeaderTitle>
+                                <expandedHeading>
+                                    <m:Title text="Cadastrar Pedido" wrapping="true"/>
+                                </expandedHeading>
+                
+                                <snappedHeading>
+                                    <m:FlexBox fitContainer="true" alignItems="Center">
+                                        <m:Avatar class="sapUiTinyMarginEnd" displayShape="Square" displaySize="L" src="../test/pdf/download.jpg"/>
+                                        <m:Title text="Cadastro de Pedido" wrapping="true"/>
+                                    </m:FlexBox>
+                                </snappedHeading>
+                
+                                <expandedContent>
+                                    <m:Text text="Preenchimento dos dados"/>
+                                </expandedContent>
+                              
+                                <actions>
+                                    <m:Button type="Emphasized" text="Criar Pedido" press="Comprar"/>
+                                    <m:Button text="Cancelar" press="onNavBack"/>
+                                    <m:Button icon="sap-icon://employee" text="Cadastrar Cliente" press="cadastrarCliente"/>
+                                </actions>
+                            </ObjectPageDynamicHeaderTitle>
+                        </headerTitle>
+                
+                        <headerContent>
+                            <m:FlexBox wrap="Wrap" fitContainer="true">
+                                <m:Avatar class="sapUiSmallMarginEnd" src="../test/pdf/download.jpg" displaySize="L"/>
+                
+                                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                                        <m:ObjectStatus state="Success" text="Lanchonete Maravilha" class="sapMObjectStatusLarge"/>
+                                </layout:VerticalLayout>
+                                
+                            </m:FlexBox>
+                        </headerContent>
+                
+                        <sections>
+                            <ObjectPageSection titleUppercase="false" title="Cliente">
+                                <ObjectPageSubSection titleUppercase="false">
+                                    <m:HBox>
+                                       <m:VBox alignContent="Inherit">
+                                            <m:OverflowToolbar>
+                                                <m:SearchField liveChange=".onSearchCostumer" width="100%" placeholder="Nome do Cliente"/>
+                                            </m:OverflowToolbar>
+                                        </m:VBox>
+                                        <m:VBox width="50%">
+                                            
+                                            <m:List
+                                                 id="idListCostumer"
+                                                 items="{/CostumersSet}"
+                                                 selectionChange=".onSelectionChangeCostumer"
+                                                 mode="SingleSelect"
+                                                 growing="true"
+                                                 growingThreshold="1"
+                                                 includeItemInSelection="true">
+                                                 <m:infoToolbar>
+                                                     <m:OverflowToolbar visible="true" id="idInfoToolbarCostumer">
+                                                         <m:Label id="idFilterLabelCostumer" text="Selecionar Cliente"/>
+                                                     </m:OverflowToolbar>
+                                                 </m:infoToolbar>
+                                                 <m:StandardListItem
+                                                     title="{Costumer}"
+                                                     description="{Name}"
+                                                     icon="sap-icon://employee"
+                                                     iconInset="false"
+                                                     info="{City}" 
+                                                     infoState="{highlight}"/>
+                                             </m:List>
+                                        </m:VBox>
+                                    </m:HBox>
+
+                                </ObjectPageSubSection>
+                            </ObjectPageSection>
+
+                            <ObjectPageSection titleUppercase="false" title="Produto">
+                                <ObjectPageSubSection titleUppercase="false">
+                                    <m:HBox>
+                                       <m:VBox alignContent="Inherit">
+                                            <m:OverflowToolbar>
+                                                <m:SearchField liveChange=".onSearchProduct" width="100%" placeholder="Produto"/>
+                                            </m:OverflowToolbar>
+                                        </m:VBox>
+                                        <m:VBox width="50%">
+                                            
+                                            <m:List
+                                                id="idListProduct"
+                                                items="{/ProductsSet}"
+                                                selectionChange=".onSelectionChangeProduct"
+                                                mode="MultiSelect"
+                                                growing="true"
+                                                growingThreshold="3"
+                                                includeItemInSelection="true">
+                                                <m:infoToolbar>
+                                                    <m:OverflowToolbar visible="true" id="idInfoToolbar">
+                                                        <m:Label id="idFilterLabel" text="Produtos Disponíveis"/>
+                                                    </m:OverflowToolbar>
+                                                </m:infoToolbar>
+                                                <m:StandardListItem
+                                                    title="{Product}"
+                                                    description="{Productname}"
+                                                    icon="sap-icon://cart"
+                                                    iconInset="false"
+                                                    highlight="Success"
+                                                    info="{Price}" 
+                                                    infoState="{highlight}"/>
+                                            </m:List>
+                                        </m:VBox>
+                                    </m:HBox>
+                                </ObjectPageSubSection>
+                            </ObjectPageSection>
+
+                            <ObjectPageSection titleUppercase="false" title="Entrega">
+                                <ObjectPageSubSection titleUppercase="false">
+                                   <m:HBox>                   
+                                         <m:VBox >
+                                            <m:Label text="Tipo de Entrega"/>
+                                            <m:RadioButtonGroup id="Delivery"  columns="3" width="100%" class="sapUiMediumMarginBottom">
+                                            <m:RadioButton id="Delivery-1" text="Entregar" />
+                                            <m:RadioButton id="Delivery-2" text="Cliente Retira" />
+                                            </m:RadioButtonGroup>
+                                        </m:VBox>
+                                    </m:HBox>
+                                                      
+                                </ObjectPageSubSection>
+                            </ObjectPageSection>
+                            
+                            <ObjectPageSection titleUppercase="false" title="Pagamento">
+                                <ObjectPageSubSection titleUppercase="false">
+                                        <m:HBox>
+                                            <m:VBox >
+                                                <m:Label text="Forma de Pagamento"/>
+                                                <m:RadioButtonGroup id="Payment" columns="4" width="100%" class="sapUiMediumMarginBottom">
+                                                <m:RadioButton id="Payment-1" text="Cartão de Crédito" />
+                                                <m:RadioButton id="Payment-2" text="Cartão de Débito" />
+                                                <m:RadioButton id="payment-3" text="Pix" />
+                                                <m:RadioButton id="payment-4" text="Dinheiro" />
+                                                </m:RadioButtonGroup>
+                                            </m:VBox>
+                                        </m:HBox>   
+                                </ObjectPageSubSection>
+                            </ObjectPageSection>
+                        </sections>
+                    </ObjectPageLayout>           
+                </m:content>
+			</m:Page>
+		</m:pages>
+	</m:App>
+</m:Shell>
+
+</mvc:View>

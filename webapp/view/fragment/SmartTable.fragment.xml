@@ -1,0 +1,147 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:core="sap.ui.core" 
+>
+    <smartTable:SmartTable id="LineItemsSmartTable"
+    entitySet="PurchasesViewSet" smartFilterId="smartFilterBar" 
+    class="sapUiResponsiveContentPadding"  
+    tableType="ResponsiveTable" demandPopin="true"                                                                      
+    beforeRebindTable="onBeforeRebindTable"
+    initiallyVisibleFields="Purchase,Costumer,Name,Status,Delivery,Payment,Total" >
+    <smartTable:customToolbar> 
+        <Toolbar>
+            <Button 
+            icon = "sap-icon://add-document"
+            text="Novo Pedido" 
+            press="criarPedido" />
+            
+            <Button
+            icon="sap-icon://employee"
+            text="Novo Produto"
+            press="criarProduto"/>
+            <Button
+            text="Imprimir"
+            press="visualizar"/>
+        </Toolbar>
+    </smartTable:customToolbar>
+
+    <Table id="SelectionTable">
+        <columns>
+            <Column>        
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Purchase", "leadingProperty": "Purchase", "filterProperty": "Purchase"}'/>
+                </customData>
+                <Text text ="Código do Pedido"/>    
+            </Column>        
+            <Column>       
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Costumer", "leadingProperty": "Costumer", "filterProperty": "Costumer"}'/>
+                </customData>
+                <Text text ="Código do Cliente"/>    
+            </Column>
+            <Column>       
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Name", "leadingProperty": "Name", "filterProperty": "Name"}'/>
+                </customData>
+                <Text text ="Código do Cliente"/>    
+            </Column>
+            <Column>        
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Delivery", "leadingProperty": "Delivery", "filterProperty": "Delivery"}'
+                    />
+                </customData>
+                <Text text ="Forma de entrega"/>    
+            </Column>
+            <Column>         
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Status", "leadingProperty": "Status", "filterProperty": "Status"}'
+                    />
+                </customData>
+                <Text text ="Status do Pedido"/>    
+            </Column>
+            <Column>         
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Createdon", "leadingProperty": "Createdon", "filterProperty": "Createdon"}'
+                    />
+                </customData>
+                <Text text ="Data"/>    
+            </Column>
+            <Column>         
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Payment", "leadingProperty": "Payment", "filterProperty": "Payment"}'
+                    />
+                </customData>
+                <Text text ="Forma de Pagamento"/>    
+            </Column>
+            <Column>        
+                <customData>
+                    <core:CustomData key="p13nData"
+                    value = '\{"columnKey": "Total", "leadingProperty": "Total", "filterProperty": "Total"}'
+                    />
+                </customData>
+                <Text text ="Valor"/>    
+            </Column>   
+        </columns>
+        <items>
+            <ColumnListItem type="Navigation" press="onNavigationPress">
+                <cells>
+                    <Text
+                    text="{Purchase}"
+                    />
+                </cells>                 
+                <cells>  
+                    <Text
+                    text="{Costumer}"
+                    />
+                </cells>
+                <cells>  
+                    <Text
+                    text="{Name}"
+                    />
+                </cells>
+                <cells>  
+                    <Text 
+                    text = "{Delivery}"
+                    /> 
+                </cells>     
+                <cells>
+                    <Text
+                    text="{Status}"
+                    />
+                </cells> 
+                <cells>
+                    <Text
+                    text="{Createdon}"
+                    />
+                </cells>                 
+                <cells>
+                    <Text
+                    text="{Payment}"
+                    />
+                </cells>
+                <cells>
+                    <Text
+                    text="{Total}"
+                    />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+
+
+    <!-- layout data used to make the table growing but the filter bar fixed -->
+    <smartTable:layoutData>
+        <FlexItemData growFactor="1" baseSize="0%"/>
+    </smartTable:layoutData>               
+    </smartTable:SmartTable>
+
+</c:FragmentDefinition>

@@ -1,0 +1,111 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	controllerName="project1.controller.CadastroCliente"
+	height="100%">
+		<m:Page id="page" showNavButton="true" navButtonPress="onNavBack">
+				<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+					<headerTitle>
+						<ObjectPageDynamicHeaderTitle>
+							<expandedHeading>
+								<m:Title text="Dados de Cliente" wrapping="true" />
+							</expandedHeading>
+
+							<snappedHeading>
+								<m:HBox>
+									<m:VBox>
+										<m:Avatar class="sapUiSmallMarginEnd" displayShape="Square" src="sap-icon://add-employee"/>
+									</m:VBox>
+
+									<m:VBox>
+										<m:Title text="Cadastro de Cliente" wrapping="true"/>
+										<m:Label text="Ficha Cadastral"/>
+									</m:VBox>
+								</m:HBox>
+							</snappedHeading>
+
+							<expandedContent>
+								<m:Label text="Ficha Cadastral"/>
+							</expandedContent>
+
+
+							<actions>
+								<m:Button text="Adicionar" press="adicionarCliente" type="Emphasized"/>
+								<m:Button text="Cancelar" press="onNavBack"/>
+							</actions>
+						</ObjectPageDynamicHeaderTitle>
+					</headerTitle>
+
+					<headerContent>
+						<m:FlexBox wrap="Wrap" fitContainer="true">
+							<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" src="sap-icon://add-employee" displaySize="L"/>
+							<m:HBox>
+								<m:VBox class="sapUiSmallMarginBottom  sapUiLargeMarginEnd">
+									<m:Title class="sapUiTinyMarginBottom" text="Nome do cliente"></m:Title>
+										<m:Input type="Text" value="{Costumer>/Name}"/>
+								</m:VBox>
+								<m:VBox class="sapUiSmallMarginBottom  sapUiLargeMarginEnd">
+									<m:Title text="Cidade" class="sapUiTinyMarginBottom"/>
+										<m:Input type="Text" value="{Costumer>/City}"/>
+									
+								</m:VBox>
+								<m:VBox class="sapUiSmallMarginBottom  sapUiLargeMarginEnd">
+									<m:Title text="Endereço" class="sapUiTinyMarginBottom"/>
+										<m:Input type="Text" value="{Costumer>/Address}"/>
+									
+								</m:VBox>
+								
+						</m:HBox>
+						
+						<m:HBox>
+							<m:VBox width="340px" class="sapUiSmallMarginBottom">
+								<m:Title text="Informações Adicionais" class="sapUiTinyMarginBottom"/>
+								<m:TextArea
+									cols="40"
+									maxLength="50"
+									rows="4"
+									showExceededText="true"
+									placeholder="Coloque alguma coisa"
+									value="{Costumer>/Info}">
+								</m:TextArea>
+							</m:VBox>
+							
+							<m:VBox>
+								<m:Title text="Telefone para contato"/>	
+							<m:Input type="Number" value="{Costumer>/Phonenumber}" maxLength="11"/>	
+							</m:VBox>
+							
+							<m:VBox width="40px"/>
+							
+							<m:VBox >
+								<m:Title text="Gênero"/>
+									<m:RadioButtonGroup id="Genero" columns="3" width="100%" class="sapUiMediumMarginBottom">
+									<m:RadioButton id="Genero-1" text="Masculino" />
+									<m:RadioButton id="Genero-2" text="Feminino" />
+									</m:RadioButtonGroup>
+							</m:VBox>
+
+						</m:HBox>
+					
+					</m:FlexBox>
+					</headerContent>
+
+					<sections>
+						<ObjectPageSection titleUppercase="false" title="Lista de Clientes Cadastrados">
+							<subSections>
+								<ObjectPageSubSection showTitle="false">
+									<blocks>
+										<smartTable:SmartTable id="LineItemsSmartTable" entitySet="CostumersSet"  tableType="Table" 
+											header="Line Items" persistencyKey="SmartTableAnalytical_Explored" 
+											enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+											editTogglable="true" initiallyVisibleFields="Costumer,Name,Address,City,Phonenumber,Genero,Info">
+										</smartTable:SmartTable>
+									</blocks>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>			
+		</m:Page>
+</mvc:View>

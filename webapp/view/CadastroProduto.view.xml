@@ -1,0 +1,90 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	controllerName="project1.controller.CadastroProduto"
+	height="100%">
+		<m:Page id="page" showNavButton="true" navButtonPress="onNavBack">
+				<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+					<headerTitle>
+						<ObjectPageDynamicHeaderTitle>
+							<expandedHeading>
+								<m:Title text="Dados do Produto" wrapping="true" />
+							</expandedHeading>
+
+							<snappedHeading>
+								<m:HBox>
+									<m:VBox>
+										<m:Avatar class="sapUiSmallMarginEnd" displayShape="Square" initials="HF"/>
+									</m:VBox>
+
+									<m:VBox>
+										<m:Title text="Cadastro de Produto" wrapping="true"/>
+										<m:Label text="Informações do produto"/>
+									</m:VBox>
+								</m:HBox>
+							</snappedHeading>
+
+							<expandedContent>
+								<m:Label text="Informações do produto"/>
+							</expandedContent>
+
+
+							<actions>
+								<m:Button text="Salvar" press="salvarProduto" type="Emphasized"/>
+								<m:Button text="Cancelar" press="cancelar"/>
+							</actions>
+						</ObjectPageDynamicHeaderTitle>
+					</headerTitle>
+
+					<headerContent>
+						<m:FlexBox wrap="Wrap" fitContainer="true">
+							<m:Avatar class="sapUiMediumMarginEnd sapUiSmallMarginBottom" displayShape="Square" initials="NC" displaySize="L"/>
+							<m:HBox>
+								<m:VBox class="sapUiSmallMarginBottom  sapUiLargeMarginEnd">
+									<m:Title class="sapUiTinyMarginBottom" text="Produto"></m:Title>
+										<m:Input type="Text" value="{Product>/Productname}"/>
+								</m:VBox>
+								
+								<m:VBox class="sapUiSmallMarginBottom  sapUiLargeMarginEnd">
+									<m:Title text="Valor" class="sapUiTinyMarginBottom"/>
+										<m:Input type="Text" value="{Product>/Price}"/>
+								</m:VBox>
+							</m:HBox>
+						
+						<m:HBox>
+							<m:VBox width="340px" class="sapUiSmallMarginBottom">
+								<m:Title text="Detalhes do Produto" class="sapUiTinyMarginBottom"/>
+								<m:TextArea
+									cols="40"
+									maxLength="50"
+									rows="4"
+									showExceededText="true"
+									placeholder="Com dois hambúrgueres de carne 100% bovina, queijo cheddar derretido, cebola incrível molho Big Mac."
+									value="{Product>/Description}">
+								</m:TextArea>
+							</m:VBox>
+
+						</m:HBox>
+					
+					</m:FlexBox>
+					</headerContent>
+
+					<sections>
+						<ObjectPageSection titleUppercase="false" title="Lista de Produtos Cadastrados">
+							<subSections>
+								<ObjectPageSubSection showTitle="false">
+									<blocks>
+										<smartTable:SmartTable id="LineItemsSmartTable" entitySet="ProductsSet"  tableType="Table" 
+											header="Line Items" persistencyKey="SmartTableAnalytical_Explored" 
+											enableAutoBinding="true" class="sapUiResponsiveContentPadding" 
+											editTogglable="true" initiallyVisibleFields="Product,Productname,Description,Price">
+										</smartTable:SmartTable>
+									</blocks>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>			
+		</m:Page>
+</mvc:View>

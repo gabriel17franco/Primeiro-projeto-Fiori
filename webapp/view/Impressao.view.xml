@@ -1,0 +1,242 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"	
+	controllerName="project1.controller.Impressao"
+	xmlns="sap.uxap"
+    xmlns:m="sap.m"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:layout="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	>
+<m:SplitApp id="SplitAppDemo" initialDetail="detail" initialMaster="master" title="Comex" orientationChange="onOrientationChange">
+	<m:detailPages>
+		<m:Page id="detail" title="Detail" class="sapUiStdPage">
+			<m:content>
+				<ObjectPageLayout id="ObjectPageLayout" enableLazyLoading="false"  showTitleInHeaderContent="true"  showHeaderContent="true">
+					
+					<headerTitle>
+						<ObjectPageHeader objectImageURI="sap-icon://my-sales-order"
+										  objectImageShape="Circle"
+										  objectTitle="Invoice GY7687532"
+										  objectSubtitle="DAHONG DOWN PRODUCTS CO LTD" 
+										  objectImageAlt="Senior UI Developer"
+										  id="ObjectPageLayoutHeaderTitle"
+										  isObjectIconAlwaysVisible="false"
+										  isObjectTitleAlwaysVisible="false"
+										  showPlaceholder="true">
+							<actions>
+								<ObjectPageHeaderActionButton icon="sap-icon://pull-down" text="show section" type="Emphasized"/>
+								<ObjectPageHeaderActionButton icon="sap-icon://show" text="show state" type="Emphasized"/>
+							</actions>
+						</ObjectPageHeader>
+					</headerTitle>
+				
+					<headerContent>
+						<layout:VerticalLayout>
+							<m:ObjectStatus title="Tipo Invoice" text="RE-L"/>
+							<m:ObjectStatus title="Moeda" text="USD"/>
+							<m:ObjectStatus title="Taxa Câmbio" text="5.29313"/>
+							<m:ObjectStatus title="Data Referência" text="07.09.2021"/>
+						</layout:VerticalLayout>
+			
+						<layout:VerticalLayout>
+							<layout:layoutData>
+								<ObjectPageHeaderLayoutData visible="false"/>
+							</layout:layoutData>
+							<m:ObjectStatus title="Montante Total" text="18.723,60 USD"/>
+							<m:ObjectStatus title="Total de Frete" text="1.012,10 USD"/>
+							<m:ObjectStatus title="Total de Seguro" text="26,82 USD"/>
+							
+						</layout:VerticalLayout>
+			
+						<layout:VerticalLayout>
+							<layout:layoutData>
+								<ObjectPageHeaderLayoutData visible="false" />
+							</layout:layoutData>
+							<m:ObjectStatus title="Total DA" text="3.661,12 USD" />
+							<m:ObjectStatus title="Total Sicomex" text="43,02 USD" />
+						</layout:VerticalLayout>
+						
+					</headerContent>
+				
+					<sections>
+						
+						<ObjectPageSection title="Fatura Fornecedor">
+							<ObjectPageSubSection title= "Documento" titleUppercase="true">
+								<blocks>
+									<f:SimpleForm id="SimpleFormChange480_12120"
+										editable="true"
+										layout="ResponsiveGridLayout"
+										title=""
+										labelSpanXL="4"
+										labelSpanL="4"
+										labelSpanM="12"
+										labelSpanS="12"
+										adjustLabelSpan="false"
+										emptySpanXL="0"
+										emptySpanL="0"
+										emptySpanM="0"
+										emptySpanS="0"
+										columnsXL="2"
+										columnsL="2"
+										columnsM="1"
+										singleContainerFullSize="false" >
+										<f:content>
+											<m:Label text="Fatura" />
+											<m:Text text="5105640678/2021" />
+											<m:Label text="Data Lançamento" />
+											<m:Text text="15.09.2021" />
+										</f:content>
+										<m:Button width="200px"
+											icon="sap-icon://accept"	
+											text="Lançar Fatura"
+											type="Accept"
+											/>
+										<m:Button width="200px"
+											icon="sap-icon://decline"	
+											text="Estornar"
+											type="Reject"
+											/>	
+									</f:SimpleForm>	
+								</blocks>
+														
+							</ObjectPageSubSection>
+							
+							<ObjectPageSubSection title="Invoice Itens" titleUppercase="true">
+								<blocks >
+									<smartTable:SmartTable id="LineItemsSmartTable" entitySet="" 
+										smartFilterId="smartFilterBar" tableType="Table" useExportToExcel="true" 
+										beforeExport="onBeforeExport" useVariantManagement="false" useTablePersonalisation="true" 
+										header="Line Items" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" 
+										enableAutoBinding="true" class="sapUiResponsiveContentPadding">
+											<!-- layout data used to make the table growing but the filter bar fixed -->
+											<smartTable:layoutData>
+													<m:FlexItemData growFactor="1" baseSize="0%"/>
+											</smartTable:layoutData>
+									</smartTable:SmartTable>
+								</blocks>
+								
+							</ObjectPageSubSection>
+						</ObjectPageSection>
+			
+						<ObjectPageSection title="Debitos Posteriores">
+							<ObjectPageSubSection>
+								<m:HBox>
+									<m:VBox >
+										<m:Label text="Forma de Pagamento"/>
+										<m:RadioButtonGroup id="Paymsent" columns="4" width="100%" class="sapUiMediumMarginBottom">
+										<m:RadioButton id="Paymenst-1" text="Cartão de Crédito" />
+										<m:RadioButton id="Paymesnt-2" text="Cartão de Débito" />
+										<m:RadioButton id="paysment-3" text="Pix" />
+										<m:RadioButton id="paymesnt-4" text="Dinheiro" />
+										</m:RadioButtonGroup>
+									</m:VBox>
+								</m:HBox>   
+	
+							</ObjectPageSubSection>
+						</ObjectPageSection>
+						
+						<ObjectPageSection title="NF-E Manual">
+							<ObjectPageSubSection>
+								<m:HBox>
+									<m:VBox >
+										<m:Label text="Forma de Pagamento"/>
+										<m:RadioButtonGroup id="Paymssent" columns="4" width="100%" class="sapUiMediumMarginBottom">
+										<m:RadioButton id="Paymenst-s1" text="Cartão de Crédito" />
+										<m:RadioButton id="Paymesnt-s2" text="Cartão de Débito" />
+										<m:RadioButton id="paysments-3" text="Pix" />
+										<m:RadioButton id="paymesnt-s4" text="Dinheiro" />
+										</m:RadioButtonGroup>
+									</m:VBox>
+								</m:HBox>   
+	
+							</ObjectPageSubSection>
+						</ObjectPageSection>
+						
+						<ObjectPageSection title="Contabilização">
+							<ObjectPageSubSection>
+								<m:HBox>
+									<m:VBox >
+										<m:Label text="Forma de Pagamento"/>
+										<m:RadioButtonGroup id="Paymsssent" columns="4" width="100%" class="sapUiMediumMarginBottom">
+										<m:RadioButton id="Paymendst-s1" text="Cartão de Crédito" />
+										<m:RadioButton id="Paymefsnt-s2" text="Cartão de Débito" />
+										<m:RadioButton id="paysmednts-3" text="Pix" />
+										<m:RadioButton id="paymefsnt-s4" text="Dinheiro" />
+										</m:RadioButtonGroup>
+									</m:VBox>
+								</m:HBox>   
+	
+							</ObjectPageSubSection>
+						</ObjectPageSection>
+						
+						<ObjectPageSection title="Histórico">
+							<ObjectPageSubSection>
+								<m:HBox>
+									<m:VBox >
+										<m:Label text="Forma de Pagamento"/>
+										<m:RadioButtonGroup id="Paymsewrssent" columns="4" width="100%" class="sapUiMediumMarginBottom">
+										<m:RadioButton id="Paymendewrst-s1" text="Cartão de Crédito" />
+										<m:RadioButton id="Paymerewfsnt-s2" text="Cartão de Débito" />
+										<m:RadioButton id="paysmerwednts-3" text="Pix" />
+										<m:RadioButton id="paymefrewsnt-s4" text="Dinheiro" />
+										</m:RadioButtonGroup>
+									</m:VBox>
+								</m:HBox>   
+	
+							</ObjectPageSubSection>
+						</ObjectPageSection>
+					</sections>
+			
+				</ObjectPageLayout>
+			</m:content>
+		</m:Page>
+		
+		
+	</m:detailPages>
+	<m:masterPages>
+		<m:Page id="master" title="Invoice List"  class="sapUiStdPage">
+			<m:content>				
+				<m:OverflowToolbar>
+					<m:SearchField liveChange=".onSearchProduct" width="100%" placeholder="Search"/>
+				</m:OverflowToolbar>
+			
+				<m:List
+					id="idListProduct"
+					items="{list>/results}"
+					headerText="Invoices"
+					>
+					<m:items>
+						<m:ObjectListItem
+							title="{list>Invoice}"
+							type="Active"
+							press="onListItemPress"
+							number="{list>Valor}"
+							numberUnit="USD"
+							numberStatus="Success"
+							>
+							
+							<m:firstStatus>
+								<m:ObjectStatus text="{list>status}"
+								state="Success"
+								/>
+
+							</m:firstStatus>
+							
+							<m:attributes>
+								<m:ObjectAttribute text="Alguma coisa" />
+								<m:ObjectAttribute text="Alguma coisa" />
+							</m:attributes>
+						</m:ObjectListItem>
+					</m:items>
+				
+				</m:List>                                                                
+			</m:content>
+		                              
+				
+				   
+			
+		</m:Page>
+		
+	</m:masterPages>
+</m:SplitApp>
+</mvc:View>

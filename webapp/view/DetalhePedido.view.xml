@@ -1,0 +1,161 @@
+<mvc:View
+	
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m"
+    displayBlock="true"
+    xmlns:core="sap.ui.core"
+    controllerName="project1.controller.DetalhePedido"
+    >
+
+<m:Shell id="shell">
+	<m:App id="app">
+		<m:pages>
+			<m:Page id="page"
+			  showNavButton="true" navButtonPress="onNavBack">
+				<m:content>
+                    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+                	<headerTitle>
+                        <ObjectPageDynamicHeaderTitle>
+                            <expandedHeading>
+                                <m:Title text="Visão Geral do Pedido: {PurchaseHeader>/Purchase}" id="title" />
+                            </expandedHeading>
+            
+                            <snappedHeading>
+                                <m:HBox>
+                                    <m:Avatar src="../test/pdf/mcdonalds.jpg"
+                                        class="sapUiMediumMarginEnd"
+                                        displayShape="Square" />
+                                    <m:VBox>
+                                        <m:Title text="Produto" />
+                                        <m:Label text="Código do produto" />
+                                    </m:VBox>
+                                </m:HBox>
+                            </snappedHeading>
+            
+                            <actions>
+                                <m:HBox >                                                       
+                                   
+                                    <m:VBox>
+                                        <m:Button id="atualizar" text="Atualizar Status" press="atualizarStatus" type="Emphasized"/>                                    
+                                    </m:VBox>
+                                    <m:VBox width="10px"
+                                    />
+                                    <m:VBox alignContent="Start">                                     
+                                      <m:Select id="status2">
+                                            <core:Item key="PR" text="Preparando" />
+                                            <core:Item key="PE" text="Pendente" />
+                                            <core:Item key="EN" text="Entregue" />
+                                            <core:Item key="CO" text="Concluído" />
+                                            
+                                        </m:Select>
+                                   
+                                    </m:VBox>
+                                    <m:VBox width="10px"
+                                    />
+                                    <m:VBox>
+                                        <m:Button id="cancelar"  text="Cancelar Pedido" press="atualizarStatus" type="Reject"/>                                    
+                                    </m:VBox>
+                                    </m:HBox>
+                               
+                            </actions>
+                        </ObjectPageDynamicHeaderTitle>
+                    </headerTitle>
+                    
+                    <headerContent>
+                        <m:FlexBox wrap="Wrap" fitContainer="true">
+                            <m:Avatar src="../test/pdf/mcdonalds.jpg"
+                                class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+                                displayShape="Square"
+                                displaySize="L" />
+            
+                            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">                             
+                                    <m:Title text="Nome do Cliente" class="sapUiTinyMarginBottom" />
+                                    <m:ObjectStatus text="{PurchaseHeader>/Name}"
+                                        class="sapMObjectStatusLarge"
+                                        state="Information" />    
+                            </m:VBox>
+            
+                            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                                <m:Title text="Status" class="sapUiTinyMarginBottom" />
+                                <m:ObjectStatus text="{PurchaseHeader>/Status}"
+                                    state="Success"
+                                    class="sapMObjectStatusLarge" />
+                            </m:VBox>
+                            
+                            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                                <m:Title text="Tipo de entrega" class="sapUiTinyMarginBottom" />
+                                <m:ObjectStatus text="{PurchaseHeader>/Delivery}"
+                                    state="Success"
+                                    class="sapMObjectStatusLarge" />
+                            </m:VBox>
+            
+                            <m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+                                <m:Title text="Tempo estimado" class="sapUiTinyMarginBottom" />
+                                <m:ObjectStatus text="2 horas"
+                                    icon="sap-icon://car-rental"
+                                    class="sapMObjectStatusLarge" />
+                            </m:VBox>
+            
+                            <m:VBox class="sapUiLargeMarginEnd">
+                                <m:Title text="Valor do pedido" class="sapUiTinyMarginBottom" />
+                                <m:ObjectNumber number="{
+                                         path: 'PurchaseHeader>/Total',
+                                        formatter: '.formatter.totalFormat'                                   
+                                        }"
+                                    unit="BRL"
+                                    emphasized="false"
+                                    class="sapMObjectNumberLarge" />
+                            </m:VBox> 
+                            <m:VBox class="sapUiLargeMarginEnd">
+                                <m:Title text="Forma de Pagamento" class="sapUiTinyMarginBottom" />
+                                <m:ObjectStatus text="{
+                                    path: 'PurchaseHeader>/Payment',
+                                    formatter: '.formatter.formatPayment'
+                                    }"
+                                    icon="sap-icon://paid-leave"
+                                    state="Success"
+                                    class="sapMObjectStatusLarge" />
+                            </m:VBox>
+                        </m:FlexBox>
+                    </headerContent>
+                    
+                    <sections>
+                        <ObjectPageSection titleUppercase="false" title="General Information">
+                            <subSections>
+                                <ObjectPageSubSection title="Itens do Pedido" showTitle="false">
+                                    <blocks>
+                                
+                                        <m:List
+                                                id="idListProduct"
+                                                items="{list>/results}"
+                                                mode="None"
+                                                growing="true"
+                                                growingThreshold="3"
+                                                includeItemInSelection="true">
+                                                <m:StandardListItem
+                                                    title="{list>Productname}"
+                                                    description="{list>Description}"
+                                                    icon="sap-icon://cart"
+                                                    iconInset="false"
+                                                    highlight="Success"
+                                                    infoState="{highlight}"/>
+                                            </m:List>
+                                           
+                                        </blocks>
+
+                                      
+                                </ObjectPageSubSection>
+                            </subSections>
+                        </ObjectPageSection>
+                    </sections>    
+             </ObjectPageLayout>
+
+
+
+				</m:content>
+			</m:Page>
+		</m:pages>
+	</m:App>
+</m:Shell>
+</mvc:View>
